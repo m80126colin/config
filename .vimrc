@@ -20,6 +20,10 @@ syntax on
 set nu
 set nowrap
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 set nocompatible
 set wildmenu
 set backupdir=~/tmp,.,/var/tmp/vi.recover,/tmp
@@ -42,10 +46,11 @@ if version >= 600
     set foldmethod=marker
     set foldlevel=1
 "    set foldtext=/^/=>
+"    encoding type: big5,utf-8
     " set encoding=utf-8
+    " set encoding=big5
+    set termencoding=utf-8
     " set fileencoding=big5
-    " set termencoding=big5
-    set encoding=big5
     " set fileencodings=latin,big5,ucs-bom,utf-8,sjis,big5
     set fileencodings=ucs-bom,utf-8,sjis,big5,latin1
 else

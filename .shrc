@@ -5,32 +5,40 @@
 #
 
 ## My Aliasas
+
 # usually used
 alias la='ls -al | more'
 alias ll='ls -l | more'
 alias show='compgen -abckA function | less'
+
 # use assembler bass and desembler soprano
 __bass() { java -jar ~/assembler/bass/bass.jar $1; }
 alias bass='__bass'
 __soprano() { java -jar ~/assembler/bass/soprano.jar $1; }
 alias soprano='__soprano'
+
 # git alias
 __gitcong() { git config --global $1; }
 alias gitcong='__gitcong'
+
 # color table
-alias color='~/color_256.sh'
+alias color='~/color_256.sh | more'
+
 
 ## Standard Aliases
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
-alias vi=vim
+alias vi='vim'
+alias dir='ls -lg | more'
+alias cls='clear'
 alias telnet='telnet -8'
 os=${OSTYPE/[^a-z]*/}
 
 case "$os" in
 "freebsd")
 	alias ls='gnuls --color --show-control-chars -F'
+	export LSCOLORS='ExGxFxdxCxDxDxhbadacad'
 	;;
 "linux")
 	alias ls='ls --color --show-control-chars -F'
