@@ -1,0 +1,67 @@
+# This file should contain aliases, shell variables, and functios,
+# those cannot be passed to child process.
+#
+# Ref to .profile for details
+#
+
+## My Aliasas
+# usually used
+alias la='ls -al | more'
+alias ll='ls -l | more'
+alias show='compgen -abckA function | less'
+# use assembler bass and desembler soprano
+__bass() { java -jar ~/assembler/bass/bass.jar $1; }
+alias bass='__bass'
+__soprano() { java -jar ~/assembler/bass/soprano.jar $1; }
+alias soprano='__soprano'
+# git alias
+__gitcong() { git config --global $1; }
+alias gitcong='__gitcong'
+# color table
+alias color='~/color_256.sh'
+
+## Standard Aliases
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias vi=vim
+alias telnet='telnet -8'
+os=${OSTYPE/[^a-z]*/}
+
+case "$os" in
+"freebsd")
+	alias ls='gnuls --color --show-control-chars -F'
+	;;
+"linux")
+	alias ls='ls --color --show-control-chars -F'
+	;;
+"solaris")
+	alias ls='ls --color --show-control-chars -F'
+	alias ping="ping -s"
+	;;
+esac
+
+## Local aliases
+#
+alias screen='screen -D -R'
+
+## Extra aliases
+#
+alias grep='egrep --color=auto'
+alias talk=ytalk
+
+## Shell style
+#
+if [ $SHELL = "/bin/sh" ]; then
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@`hostname` [W$WINDOW] "
+  else 
+    export PS1="$LOGNAME@`hostname`$ "
+  fi
+else 
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@\h {\w} [W$WINDOW] "
+  else
+    export PS1="\u@\h [\w] "
+  fi
+fi
